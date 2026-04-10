@@ -1,0 +1,204 @@
+{
+  "version": "2.0",
+  "updates": [
+    {
+      "page": "Create",
+      "changes": [
+        {
+          "action": "remove",
+          "target": "preset_ideas_section"
+        },
+        {
+          "action": "enhance",
+          "target": "style_genre_tags_input",
+          "details": {
+            "type": "autosuggest_tag_input",
+            "behavior": {
+              "source": "predefined_genre_list",
+              "list_size": 500,
+              "interaction": [
+                "user_types_text",
+                "show_matching_genres_dropdown",
+                "on_select_or_enter_convert_to_tag",
+                "display_tag_as_bubble_with_remove_x"
+              ],
+              "multi_select": true,
+              "removable_tags": true
+            }
+          }
+        },
+        {
+          "action": "add",
+          "target": "controls_section",
+          "component": "duration_slider",
+          "details": {
+            "label": "Duration",
+            "range_seconds": [10, 45],
+            "step": 1,
+            "default": 20
+          }
+        },
+        {
+          "action": "modify",
+          "target": "model_selection",
+          "details": {
+            "replace_with": [
+              "MusicGen Small",
+              "MusicGen Medium",
+              "MusicGen Large"
+            ],
+            "type": "segmented_control_or_dropdown"
+          }
+        },
+        {
+          "action": "move",
+          "target": "add_lyrics_section",
+          "destination": "above_advanced_parameters"
+        },
+        {
+          "action": "remove",
+          "target": "advanced_parameters_buttons"
+        }
+      ]
+    },
+    {
+      "page": "Explore",
+      "changes": [
+        {
+          "action": "move",
+          "targets": [
+            "Energy_Consumption_section",
+            "Ethics_and_Royalties_section",
+            "Model_Originality_section"
+          ],
+          "from": "Learn",
+          "to": "Explore",
+          "placement": "next_to_model_and_dataset_comparison_tabs"
+        }
+      ]
+    },
+    {
+      "page": "Student Models",
+      "changes": [
+        {
+          "action": "remove",
+          "target": "remix_button_all_models"
+        },
+        {
+          "action": "add_conditional_section",
+          "target": "liked_models_row",
+          "details": {
+            "position": "top_of_page",
+            "visibility": "only_if_user_has_liked_models",
+            "layout": "horizontal_scroll"
+          }
+        }
+      ]
+    },
+    {
+      "page": "Single Model View",
+      "changes": [
+        {
+          "action": "remove",
+          "target": "compare_with_default_model_section"
+        },
+        {
+          "action": "add",
+          "target": "audio_preview_section",
+          "details": {
+            "components": ["play_button", "waveform_optional"]
+          }
+        },
+        {
+          "action": "remove",
+          "targets": [
+            "try_model_button",
+            "remix_model_button"
+          ]
+        },
+        {
+          "action": "add",
+          "target": "like_button",
+          "details": {
+            "type": "toggle",
+            "icon": "heart",
+            "state": ["liked", "unliked"]
+          }
+        }
+      ]
+    },
+    {
+      "page": "Analyze",
+      "changes": [
+        {
+          "action": "rename",
+          "target": "page_title",
+          "new_value": "Upload"
+        },
+        {
+          "action": "replace_all_content",
+          "with": [
+            {
+              "component": "upload_box",
+              "details": {
+                "accepts": ["audio_files"]
+              }
+            },
+            {
+              "component": "choose_from_projects_button",
+              "action_on_click": "navigate_to_library"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page": "Projects",
+      "changes": [
+        {
+          "action": "modify",
+          "target": "recent_generations_section",
+          "details": {
+            "rename_to": "Recent Songs"
+          }
+        },
+        {
+          "action": "enhance",
+          "target": "single_project_song_list",
+          "details": {
+            "per_song_controls": [
+              {
+                "type": "play_button",
+                "action": "play_audio"
+              },
+              {
+                "type": "practice_button",
+                "action": "navigate_to_practice_view"
+              }
+            ]
+          }
+        },
+        {
+          "action": "enhance",
+          "target": "recent_songs_section",
+          "details": {
+            "apply_same_controls_as": "single_project_song_list"
+          }
+        }
+      ]
+    },
+    {
+      "global_changes": [
+        {
+          "action": "remove",
+          "targets": [
+            "Practice_section",
+            "Library_section",
+            "Learn_section"
+          ],
+          "reason": "features_migrated_to_other_pages"
+        }
+      ]
+    }
+  ]
+}

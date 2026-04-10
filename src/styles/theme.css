@@ -1,0 +1,296 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+
+  /* ── Shadcn/UI base tokens (light) ── */
+  --background: rgba(240, 237, 252, 0.6);
+  --foreground: #2a1f3d;
+  --card: rgba(255, 255, 255, 0.55);
+  --card-foreground: #2a1f3d;
+  --popover: rgba(245, 242, 255, 0.97);
+  --popover-foreground: #2a1f3d;
+  --primary: #7c5fa0;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(200, 185, 220, 0.35);
+  --secondary-foreground: #2a1f3d;
+  --muted: rgba(200, 185, 220, 0.25);
+  --muted-foreground: #6b5f7a;
+  --accent: rgba(196, 122, 138, 0.15);
+  --accent-foreground: #2a1f3d;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(100, 80, 140, 0.2);
+  --input: rgba(255, 255, 255, 0.5);
+  --input-background: rgba(255, 255, 255, 0.55);
+  --switch-background: rgba(180, 160, 210, 0.4);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: rgba(124, 95, 160, 0.4);
+  --chart-1: #7c5fa0;
+  --chart-2: #c47a8a;
+  --chart-3: #d4692a;
+  --chart-4: #5b8fa8;
+  --chart-5: #86a86e;
+  --radius: 0.625rem;
+  --sidebar: rgba(245, 242, 255, 0.95);
+  --sidebar-foreground: #2a1f3d;
+  --sidebar-primary: #7c5fa0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(200, 185, 220, 0.3);
+  --sidebar-accent-foreground: #2a1f3d;
+  --sidebar-border: rgba(100, 80, 140, 0.15);
+  --sidebar-ring: rgba(124, 95, 160, 0.4);
+
+  /* ── Brand Design Tokens (light) ── */
+  --brand-text: #2a1f3d;
+  --brand-muted: #6b5f7a;
+  --brand-subtle: #9e8faa;
+  --brand-accent: #7c5fa0;
+  --brand-warm: #c47a8a;
+  --brand-cta: #d4692a;
+  --brand-cta-alt: #005030;
+  --brand-card: rgba(255, 255, 255, 0.52);
+  --brand-card-hover: rgba(255, 255, 255, 0.68);
+  --brand-card-strong: rgba(255, 255, 255, 0.78);
+  --brand-border: rgba(100, 80, 140, 0.2);
+  --brand-border-strong: rgba(100, 80, 140, 0.35);
+  --brand-nav: rgba(255, 255, 255, 0.75);
+  --brand-nav-border: rgba(100, 80, 140, 0.12);
+  --brand-modal: rgba(245, 242, 255, 0.97);
+  --brand-input: rgba(255, 255, 255, 0.55);
+  --brand-input-border: rgba(100, 80, 140, 0.25);
+  --brand-stat: rgba(124, 95, 160, 0.12);
+  --brand-active: rgba(124, 95, 160, 0.15);
+  --brand-active-border: rgba(124, 95, 160, 0.5);
+  --brand-chart-grid: rgba(42, 31, 61, 0.12);
+  --brand-chart-axis: rgba(42, 31, 61, 0.4);
+  --brand-chart-tick: rgba(42, 31, 61, 0.6);
+  --brand-chart-line: #7c5fa0;
+  --brand-waveform-from: #7c5fa0;
+  --brand-waveform-to: #c47a8a;
+  --brand-shadow: 0 4px 28px rgba(80, 55, 130, 0.13), 0 1.5px 6px rgba(80, 55, 130, 0.07);
+
+  /* ── Font families ── */
+  --font-heading: 'The Seasons', 'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --font-subheading: 'XB Niloofar', 'DM Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+.dark {
+  /* ── Shadcn/UI base tokens (dark) ── */
+  --background: rgba(20, 15, 38, 0.6);
+  --foreground: #f0ecf8;
+  --card: rgba(30, 25, 50, 0.55);
+  --card-foreground: #f0ecf8;
+  --popover: rgba(25, 20, 45, 0.97);
+  --popover-foreground: #f0ecf8;
+  --primary: #c4a0e0;
+  --primary-foreground: #1a1030;
+  --secondary: rgba(60, 50, 85, 0.5);
+  --secondary-foreground: #f0ecf8;
+  --muted: rgba(60, 50, 85, 0.4);
+  --muted-foreground: #b8aac8;
+  --accent: rgba(196, 160, 224, 0.15);
+  --accent-foreground: #f0ecf8;
+  --destructive: rgba(180, 30, 60, 0.6);
+  --destructive-foreground: #f87097;
+  --border: rgba(200, 180, 230, 0.15);
+  --input: rgba(255, 255, 255, 0.07);
+  --input-background: rgba(255, 255, 255, 0.07);
+  --switch-background: rgba(120, 100, 160, 0.5);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: rgba(196, 160, 224, 0.4);
+  --chart-1: #c4a0e0;
+  --chart-2: #e8b4b0;
+  --chart-3: #F47321;
+  --chart-4: #7bbcd4;
+  --chart-5: #a8c88e;
+  --sidebar: rgba(25, 20, 45, 0.97);
+  --sidebar-foreground: #f0ecf8;
+  --sidebar-primary: #c4a0e0;
+  --sidebar-primary-foreground: #1a1030;
+  --sidebar-accent: rgba(60, 50, 85, 0.5);
+  --sidebar-accent-foreground: #f0ecf8;
+  --sidebar-border: rgba(200, 180, 230, 0.1);
+  --sidebar-ring: rgba(196, 160, 224, 0.4);
+
+  /* ── Brand Design Tokens (dark) ── */
+  --brand-text: #f0ecf8;
+  --brand-muted: #b8aac8;
+  --brand-subtle: #7a6a8a;
+  --brand-accent: #8b6bb0;
+  --brand-warm: #c47a8a;
+  --brand-cta: #F47321;
+  --brand-cta-alt: #005030;
+  --brand-card: rgba(30, 25, 50, 0.55);
+  --brand-card-hover: rgba(40, 33, 65, 0.7);
+  --brand-card-strong: rgba(50, 40, 78, 0.78);
+  --brand-border: rgba(200, 180, 230, 0.15);
+  --brand-border-strong: rgba(200, 180, 230, 0.28);
+  --brand-nav: rgba(15, 10, 30, 0.75);
+  --brand-nav-border: rgba(200, 180, 230, 0.08);
+  --brand-modal: rgba(22, 18, 42, 0.97);
+  --brand-input: rgba(255, 255, 255, 0.06);
+  --brand-input-border: rgba(200, 180, 230, 0.2);
+  --brand-stat: rgba(255, 255, 255, 0.08);
+  --brand-active: rgba(196, 160, 224, 0.18);
+  --brand-active-border: rgba(196, 160, 224, 0.5);
+  --brand-chart-grid: rgba(255, 255, 255, 0.1);
+  --brand-chart-axis: rgba(255, 255, 255, 0.35);
+  --brand-chart-tick: rgba(255, 255, 255, 0.5);
+  --brand-chart-line: #c4a0e0;
+  --brand-waveform-from: #c4a0e0;
+  --brand-waveform-to: #e8b4b0;
+  --brand-shadow: 0 4px 28px rgba(0, 0, 0, 0.38), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand color utilities */
+  --color-brand-text: var(--brand-text);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-warm: var(--brand-warm);
+  --color-brand-cta: var(--brand-cta);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Widget / card shadow */
+  .backdrop-blur-sm.rounded-3xl,
+  .backdrop-blur-sm.rounded-2xl,
+  .backdrop-blur-sm.rounded-xl {
+    box-shadow: var(--brand-shadow);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    color: var(--brand-text);
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--brand-text);
+    letter-spacing: 0.01em;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--brand-text);
+    letter-spacing: 0.01em;
+  }
+
+  h3 {
+    font-family: var(--font-subheading);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+    color: var(--brand-text);
+  }
+
+  h4 {
+    font-family: var(--font-subheading);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--brand-text);
+  }
+
+  label {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--brand-text);
+  }
+
+  button {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input, textarea {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+    color: var(--brand-text);
+  }
+
+  p {
+    font-family: var(--font-body);
+    color: var(--brand-text);
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+}
