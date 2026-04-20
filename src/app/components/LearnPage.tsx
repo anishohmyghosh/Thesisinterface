@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { Button } from './ui/button';
-import { ChevronRight, Music, Headphones, MessageSquare, FileMusic, Scissors, Sparkles, Home, Truck, Tv } from 'lucide-react';
+import { ChevronRight, Music, Headphones, MessageSquare, FileMusic, Scissors, Sparkles, Home, Truck, Tv, Server, Cloud, Droplets, Leaf, Recycle, Shield } from 'lucide-react';
 
 const originalityData = [
   { name: 'Baseline', value: 0.1 },
@@ -17,6 +17,12 @@ const energyData = [
   { month: 'Nov', value: 0.25 },
   { month: 'Dec', value: 0.35 },
   { month: 'Jan', value: 0.5 },
+];
+
+const environmentalImpactData = [
+  { category: 'Training', co2: 85, water: 340, energy: 1200 },
+  { category: 'Inference', co2: 45, water: 180, energy: 650 },
+  { category: 'Data Centers', co2: 120, water: 520, energy: 1800 },
 ];
 
 type Tab = 'energy' | 'ethics' | 'originality' | 'studentTools';
@@ -174,7 +180,8 @@ export function LearnPage() {
         )}
 
         {activeTab === 'energy' && (
-          <div className="grid grid-cols-2 gap-12" key="energy-tab">
+          <div key="energy-tab">
+          <div className="grid grid-cols-2 gap-12">
             <div>
               <h2 className="text-xl mb-6">User Consumption</h2>
               <ResponsiveContainer width="100%" height={200} key="energy-chart">
@@ -329,6 +336,225 @@ export function LearnPage() {
                   </div>
                   <div className="text-xl font-semibold text-[#F47321]">124.93</div>
                   <div className="text-xs text-white/60">days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            {/* Environmental Impact Section */}
+            <div className="mt-12 border-t border-white/10 pt-8">
+              <h2 className="text-2xl mb-6">Environmental Impact of AI Music Technology</h2>
+
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                {/* Data Centers Card */}
+                <div className="bg-gradient-to-br from-[#F47321]/10 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="bg-[#F47321]/20 rounded-xl p-3 w-fit mb-4">
+                    <Server className="w-8 h-8 text-[#F47321]" />
+                  </div>
+                  <h3 className="text-lg mb-3">Data Center Demand</h3>
+                  <p className="text-sm text-white/70 mb-4">
+                    Training and operating modern AI models requires substantial computational resources, contributing to growing data center infrastructure and energy demands.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-white/60">Energy Intensity</span>
+                      <span className="text-xl font-semibold text-[#F47321]">↑ 48%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-gradient-to-r from-[#F47321] to-[#FF8C42] h-2 rounded-full" style={{ width: '75%' }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CO2 Emissions Card */}
+                <div className="bg-gradient-to-br from-[#FF6B6B]/10 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="bg-[#FF6B6B]/20 rounded-xl p-3 w-fit mb-4">
+                    <Cloud className="w-8 h-8 text-[#FF6B6B]" />
+                  </div>
+                  <h3 className="text-lg mb-3">Carbon Emissions</h3>
+                  <p className="text-sm text-white/70 mb-4">
+                    Large-scale AI deployment contributes to significant carbon emissions, complicating industry climate commitments and sustainability goals.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-white/60">Annual CO₂ (metric tons)</span>
+                      <span className="text-xl font-semibold text-[#FF6B6B]">284K</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8C8C] h-2 rounded-full" style={{ width: '62%' }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Water Usage Card */}
+                <div className="bg-gradient-to-br from-[#4ECDC4]/10 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="bg-[#4ECDC4]/20 rounded-xl p-3 w-fit mb-4">
+                    <Droplets className="w-8 h-8 text-[#4ECDC4]" />
+                  </div>
+                  <h3 className="text-lg mb-3">Water Consumption</h3>
+                  <p className="text-sm text-white/70 mb-4">
+                    Cooling systems for AI infrastructure require substantial water resources, with state-of-the-art models consuming millions of liters during training and operation.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-white/60">Liters per training run</span>
+                      <span className="text-xl font-semibold text-[#4ECDC4]">3.5M</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-gradient-to-r from-[#4ECDC4] to-[#6ED9D1] h-2 rounded-full" style={{ width: '85%' }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Resource Comparison Bar Chart */}
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <h3 className="text-lg mb-4">Resource Consumption by AI Activity</h3>
+                <ResponsiveContainer width="100%" height={250}>
+                  <BarChart data={environmentalImpactData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+                    <XAxis dataKey="category" stroke="#ffffff60" tick={{ fill: '#ffffff80' }} />
+                    <YAxis stroke="#ffffff60" tick={{ fill: '#ffffff80' }} />
+                    <Bar dataKey="co2" fill="#FF6B6B" radius={[8, 8, 0, 0]} />
+                    <Bar dataKey="water" fill="#4ECDC4" radius={[8, 8, 0, 0]} />
+                    <Bar dataKey="energy" fill="#F47321" radius={[8, 8, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+                <div className="flex gap-6 justify-center mt-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-[#FF6B6B]"></div>
+                    <span className="text-xs text-white/70">CO₂ (tons)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-[#4ECDC4]"></div>
+                    <span className="text-xs text-white/70">Water (1000L)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-[#F47321]"></div>
+                    <span className="text-xs text-white/70">Energy (MWh)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mitigation Strategies Section */}
+            <div className="border-t border-white/10 pt-8">
+              <h2 className="text-2xl mb-6">Sustainability & Mitigation Efforts</h2>
+
+              <div className="grid grid-cols-2 gap-6">
+                {/* Water Stewardship Card */}
+                <div className="bg-gradient-to-br from-[#005030]/20 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="bg-[#005030]/40 rounded-xl p-3">
+                      <Recycle className="w-8 h-8 text-[#00A86B]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg mb-2">Water Stewardship Programs</h3>
+                      <p className="text-sm text-white/70">
+                        Industry leaders are implementing comprehensive water stewardship initiatives to reduce freshwater consumption and restore local watersheds near data centers.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 mt-6">
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Water Recycling Rate</span>
+                      <span className="font-semibold text-[#00A86B]">78%</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Watershed Restoration</span>
+                      <span className="font-semibold text-[#00A86B]">2.4M L/yr</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* VWBA Framework Card */}
+                <div className="bg-gradient-to-br from-[#005030]/20 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="bg-[#005030]/40 rounded-xl p-3">
+                      <Droplets className="w-8 h-8 text-[#00A86B]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg mb-2">VWBA Framework</h3>
+                      <p className="text-sm text-white/70">
+                        Volumetric Water Benefit Accounting (VWBA) enables companies to quantify and offset water usage through verified restoration projects in water-stressed regions.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 mt-6">
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Water Credits Generated</span>
+                      <span className="font-semibold text-[#00A86B]">1.8M L</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Net Water Impact</span>
+                      <span className="font-semibold text-[#00A86B]">-12%</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Renewable Energy Card */}
+                <div className="bg-gradient-to-br from-[#005030]/20 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="bg-[#005030]/40 rounded-xl p-3">
+                      <Leaf className="w-8 h-8 text-[#00A86B]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg mb-2">Carbon-Aware Computing</h3>
+                      <p className="text-sm text-white/70">
+                        Advanced scheduling systems shift AI training workloads to times and locations with higher renewable energy availability, reducing carbon intensity.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 mt-6">
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Renewable Energy Mix</span>
+                      <span className="font-semibold text-[#00A86B]">67%</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Carbon Reduction</span>
+                      <span className="font-semibold text-[#00A86B]">-43%</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Model Efficiency Card */}
+                <div className="bg-gradient-to-br from-[#005030]/20 to-transparent border border-white/10 rounded-2xl p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="bg-[#005030]/40 rounded-xl p-3">
+                      <Shield className="w-8 h-8 text-[#00A86B]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg mb-2">Resource-Aware Development</h3>
+                      <p className="text-sm text-white/70">
+                        Optimizing model architectures and training techniques to achieve comparable performance with significantly reduced computational requirements and environmental impact.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 mt-6">
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Parameter Efficiency</span>
+                      <span className="font-semibold text-[#00A86B]">+35%</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-white/5 rounded-lg p-3">
+                      <span className="text-sm text-white/80">Training Time Reduced</span>
+                      <span className="font-semibold text-[#00A86B]">-28%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sustainability Balance Statement */}
+              <div className="mt-6 bg-gradient-to-r from-[#F47321]/10 via-[#4ECDC4]/10 to-[#00A86B]/10 border border-white/10 rounded-2xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-white/10 rounded-xl p-3">
+                    <Leaf className="w-6 h-6 text-white/80" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg mb-2">The Sustainability Challenge</h3>
+                    <p className="text-sm text-white/70 leading-relaxed">
+                      While AI music technology continues to expand capabilities and accessibility, the environmental costs highlight a growing tension between innovation and sustainability. Industry efforts through renewable energy adoption, water stewardship programs, and frameworks like VWBA represent critical steps toward offsetting resource consumption. However, ongoing research and development in resource-aware AI architecture remains essential to ensure the long-term viability of these technologies without compromising environmental commitments.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
