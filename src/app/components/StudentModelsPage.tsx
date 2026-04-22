@@ -140,6 +140,69 @@ export function StudentModelsPage() {
 
           {/* Right: Preview + Info */}
           <div className="col-span-2 space-y-6">
+            {/* Test Model Section - VariGen Only */}
+            {isVariGen && (
+              <div
+                className="backdrop-blur-sm rounded-3xl p-8 border"
+                style={{ background: 'var(--brand-card)', borderColor: 'var(--brand-border)' }}
+              >
+                <h2 className="text-xl mb-4">Test Model</h2>
+                <div className="space-y-4">
+                  <p className="text-sm mb-4" style={{ color: 'var(--brand-muted)' }}>
+                    Upload a MIDI file to generate a variation using VariGen
+                  </p>
+
+                  <div className="flex items-center gap-4">
+                    <label
+                      className="flex-1 cursor-pointer rounded-xl border-2 border-dashed p-6 transition-colors hover:opacity-80 text-center"
+                      style={{ borderColor: 'var(--brand-border)', background: 'var(--brand-card-hover)' }}
+                    >
+                      <input
+                        type="file"
+                        accept=".mid,.midi"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            // TODO: Add API call here when backend is ready
+                            // Example API call structure:
+                            /*
+                            const formData = new FormData();
+                            formData.append('midi_file', file);
+
+                            fetch('YOUR_API_ENDPOINT_HERE', {
+                              method: 'POST',
+                              body: formData,
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                              // Handle the generated variation
+                              console.log('Generated variation:', data);
+                            })
+                            .catch(error => {
+                              console.error('Error:', error);
+                            });
+                            */
+
+                            // For now, just show a demo warning
+                            setShowDemoWarning(true);
+                            console.log('MIDI file selected:', file.name);
+                          }
+                        }}
+                      />
+                      <Music className="w-8 h-8 mx-auto mb-2" style={{ color: 'var(--brand-muted)' }} />
+                      <div className="text-sm" style={{ color: 'var(--brand-muted)' }}>
+                        Click to upload MIDI file
+                      </div>
+                      <div className="text-xs mt-1" style={{ color: 'var(--brand-subtle)' }}>
+                        .mid or .midi files only
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Preview Card */}
             <div
               className="backdrop-blur-sm rounded-3xl p-8 border"

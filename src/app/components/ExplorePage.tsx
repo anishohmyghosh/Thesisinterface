@@ -23,9 +23,9 @@ const energyData = [
 ];
 
 const environmentalImpactData = [
-  { category: 'Training', co2: 85, water: 340, energy: 1200 },
-  { category: 'Inference', co2: 45, water: 180, energy: 650 },
-  { category: 'Data Centers', co2: 120, water: 520, energy: 1800 },
+  { id: 'training', category: 'Training', co2: 85, water: 340, energy: 1200 },
+  { id: 'inference', category: 'Inference', co2: 45, water: 180, energy: 650 },
+  { id: 'datacenters', category: 'Data Centers', co2: 120, water: 520, energy: 1800 },
 ];
 
 export function ExplorePage() {
@@ -136,9 +136,10 @@ export function ExplorePage() {
               <h2 className="text-xl mb-6">User Consumption</h2>
               <ResponsiveContainer width="100%" height={200} key="energy-chart">
                 <LineChart data={energyData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={chartGridColor} />
-                  <XAxis dataKey="month" stroke={chartAxisColor} tick={{ fill: chartTickColor }} />
+                  <CartesianGrid key="grid-energy" strokeDasharray="3 3" stroke={chartGridColor} />
+                  <XAxis key="xaxis-energy" dataKey="month" stroke={chartAxisColor} tick={{ fill: chartTickColor }} />
                   <YAxis
+                    key="yaxis-energy"
                     stroke={chartAxisColor}
                     tick={{ fill: chartTickColor }}
                     label={{ value: 'KgsCO2', angle: -90, position: 'insideLeft', fill: chartTickColor }}
@@ -203,17 +204,19 @@ export function ExplorePage() {
                   { value: '72.48', label: 'kWh', fill: 0.6 },
                   { value: '10.51', label: 'kg eq CO2', fill: 0.35 },
                   { value: '124.93', label: 'days', fill: 0.75 },
-                ].map(({ value, label, fill }) => (
-                  <div key={label} className="text-center">
+                ].map(({ value, label, fill }, idx) => (
+                  <div key={`circular-stat-${idx}`} className="text-center">
                     <div className="relative w-28 h-28 mx-auto mb-3">
                       <svg className="w-full h-full transform -rotate-90">
                         <circle
+                          key={`circle-bg-${idx}`}
                           cx="56" cy="56" r="48"
                           stroke="var(--brand-border)"
                           strokeWidth="8"
                           fill="none"
                         />
                         <circle
+                          key={`circle-fill-${idx}`}
                           cx="56" cy="56" r="48"
                           stroke={accentColor}
                           strokeWidth="8"
@@ -272,12 +275,12 @@ export function ExplorePage() {
               <h3 className="text-lg mb-4">Resource Consumption by AI Activity</h3>
               <ResponsiveContainer width="100%" height={250} key="env-impact-chart">
                 <BarChart data={environmentalImpactData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={chartGridColor} />
-                  <XAxis dataKey="category" stroke={chartAxisColor} tick={{ fill: chartTickColor }} />
-                  <YAxis stroke={chartAxisColor} tick={{ fill: chartTickColor }} />
-                  <Bar dataKey="co2" fill="#FF6B6B" radius={[8, 8, 0, 0]} />
-                  <Bar dataKey="water" fill="#4ECDC4" radius={[8, 8, 0, 0]} />
-                  <Bar dataKey="energy" fill={accentColor} radius={[8, 8, 0, 0]} />
+                  <CartesianGrid key="grid-env" strokeDasharray="3 3" stroke={chartGridColor} />
+                  <XAxis key="xaxis-env" dataKey="category" stroke={chartAxisColor} tick={{ fill: chartTickColor }} />
+                  <YAxis key="yaxis-env" stroke={chartAxisColor} tick={{ fill: chartTickColor }} />
+                  <Bar key="bar-co2" dataKey="co2" fill="#FF6B6B" radius={[8, 8, 0, 0]} />
+                  <Bar key="bar-water" dataKey="water" fill="#4ECDC4" radius={[8, 8, 0, 0]} />
+                  <Bar key="bar-energy" dataKey="energy" fill={accentColor} radius={[8, 8, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
               <div className="flex gap-6 justify-center mt-4">
@@ -364,8 +367,9 @@ export function ExplorePage() {
               <h2 className="text-xl mb-6">Originality Score</h2>
               <ResponsiveContainer width="100%" height={300} key="originality-chart">
                 <LineChart data={originalityData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={chartGridColor} />
+                  <CartesianGrid key="grid-originality" strokeDasharray="3 3" stroke={chartGridColor} />
                   <XAxis
+                    key="xaxis-originality"
                     dataKey="name"
                     stroke={chartAxisColor}
                     tick={{ fill: chartTickColor }}
@@ -374,6 +378,7 @@ export function ExplorePage() {
                     height={60}
                   />
                   <YAxis
+                    key="yaxis-originality"
                     stroke={chartAxisColor}
                     tick={{ fill: chartTickColor }}
                     label={{ value: 'Originality Score', angle: -90, position: 'insideLeft', fill: chartTickColor }}
